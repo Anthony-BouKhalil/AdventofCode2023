@@ -8,6 +8,8 @@ for line in Lines:
     Lines[count] = line.strip()
     count += 1
 
+file1 = open('main.txt', 'w')
+
 #Calculates the answer
 sum=0
 for line in Lines:
@@ -18,7 +20,7 @@ for line in Lines:
     num1_found = False
     num2_found = False
 
-    while ptr1 <= ptr2:
+    while num1_found == False or num2_found == False:
         if line[ptr1].isdigit() and num1_found == False:
             num1=int(line[ptr1])
             num1_found = True
@@ -28,6 +30,8 @@ for line in Lines:
         ptr1 += 1
         ptr2 -= 1
 
-    sum += num1 + num2
+    sum += int(str(num1) + str(num2))
+    file1.writelines(str(sum)  + "\n")
 
 print(sum)
+file1.close()
